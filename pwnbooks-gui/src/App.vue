@@ -37,6 +37,11 @@ export default {
           title: "About",
           icon: "fa fa-download",
         },
+        {
+          href: "/markdown",
+          title: "Markdown",
+          icon: "fa fa-download",
+        },
       ],
       collapsed: false,
     };
@@ -50,7 +55,7 @@ export default {
       console.log(collapsed);
       this.collapsed = collapsed;
     },
-    onItemClick (event, item, node) {
+    onItemClick(event, item, node) {
       event;
       item;
       node;
@@ -65,40 +70,38 @@ export default {
 </script>
 
 <style>
-body,
-html {
+body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   background-color: #f2f4f7;
   color: #262626;
 }
+
 #app {
   padding-left: 350px;
   transition: 0.3s ease;
+  height: 100%;
 }
+
 #app.collapsed {
   padding-left: 50px;
 }
-.sidebar-overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #000;
-  opacity: 0.5;
-  z-index: 900;
-}
+
 .app {
-  padding: 50px;
+  height: 100%;
 }
 .container {
-  max-width: 900px;
+  width: 100%;
+  height: 100%;
 }
+
 pre {
   font-family: Consolas, monospace;
   color: #000;
