@@ -8,10 +8,11 @@
       <sidebar-menu
         :menu="menu"
         :collapsed="collapsed"
-        @toggle-collapse="onToggleCollapse"
         :show-one-child="true"
+        :disableHover="true"
+        @toggle-collapse="onToggleCollapse"
+        @item-click="onItemClick"
       />
-
     </div>
   </div>
 </template>
@@ -49,11 +50,14 @@ export default {
       console.log(collapsed);
       this.collapsed = collapsed;
     },
+    onItemClick (event, item, node) {
+      event;
+      item;
+      node;
+    },
     onResize() {
       if (window.innerWidth <= 767) {
         this.collapsed = true;
-      } else {
-        this.collapsed = false;
       }
     },
   },
