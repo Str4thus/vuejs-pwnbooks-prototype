@@ -2,7 +2,7 @@ let defaultNotes = ["Flags", "Credentials", "Recon", "Enumeration", "Foothold", 
 
 export default {
     state: {
-        notebooks: [{ "name": "Blue", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }]
+        notebooks: [{ "name": "Blue", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }]
     },
     getters: {
         notebooks: state => state.notebooks,

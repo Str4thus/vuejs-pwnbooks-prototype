@@ -3,8 +3,8 @@
 <template>
   <split-pane
     v-on:resize="onResize"
-    :default-percent="10"
-    :min-percent="10"
+    :default-percent="12"
+    :min-percent="12"
     split="vertical"
   >
     <template slot="paneL">
