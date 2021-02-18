@@ -1,0 +1,59 @@
+$primary-color: $primary;
+$base-bg: $background-dark;
+
+$item-hover-bg: rgba(darken($base-bg, 20%), 0.5);
+$item-active-color: $primary;
+
+@import "vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
+
+.vsm--mobile-item {
+    display: none; /* Hide weird slide animation when clicking a menu item */
+}
+
+.v-sidebar-menu .vsm--header {
+    color: $text-color-light;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: $font-size-default;
+    background-color: $background-light;
+    color: $text-color-default;
+}
+
+#app {
+    padding-left: $menu-width-expanded;
+    transition: 0.3s ease;
+    height: 100%;
+}
+
+#app.collapsed {
+    padding-left: $menu-width-collapsed;
+}
+
+.app {
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+pre {
+    font-family: Consolas, monospace;
+    color: #000;
+    background: #fff;
+    border-radius: 2px;
+    padding: 15px;
+    line-height: 1.5;
+    overflow: auto;
+}

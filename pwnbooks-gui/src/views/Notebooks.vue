@@ -1,3 +1,5 @@
+<!-- https://code-farmer-i.github.io/vue-markdown-editor/ -->
+
 <template>
   <v-md-editor
     class="pwnbook-editor"
@@ -27,8 +29,14 @@ export default {
 };
 </script>
 
-<style>
+
+<style lang="scss">
+
 .pwnbook-editor {
   height: 100%;
+}
+
+.CodeMirror {
+  background-color: $background-light;
 }
 </style>

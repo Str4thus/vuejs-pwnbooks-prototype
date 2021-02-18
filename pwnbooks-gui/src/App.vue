@@ -1,3 +1,5 @@
+<!-- https://www.npmjs.com/package/vue-sidebar-menu -->
+
 <template>
   <div id="app" :class="{ collapsed: collapsed }">
     <div class="app">
@@ -10,16 +12,24 @@
         :collapsed="collapsed"
         :show-one-child="true"
         :disableHover="true"
-        :width="'175px'"
+        :width="'185px'"
         @toggle-collapse="onToggleCollapse"
         @item-click="onItemClick"
-      />
+      >
+        <span slot="toggle-icon">
+          <i class="fa fa-arrows-h"></i>
+        </span>
+      </sidebar-menu>
     </div>
   </div>
 </template>
 
 <script>
+import "./scss/app.scss";
+import Seperator from "./components/SidebarMenu/Seperator";
+
 export default {
+  name: "PWNBOOKS",
   data() {
     return {
       menu: [
@@ -30,17 +40,53 @@ export default {
         },
         {
           href: "/",
-          title: "Home",
+          title: "Dashboard",
           icon: "fa fa-home",
         },
         {
-          href: "/markdown",
-          title: "Markdown",
+          component: Seperator,
+        },
+        {
+          header: true,
+          title: "Core",
+          hiddenOnCollapse: true,
+        },
+        {
+          href: "/notebooks",
+          title: "Notebooks",
           icon: "fa fa-pencil",
         },
         {
-          href: "/about",
-          title: "About",
+          href: "/network-map",
+          title: "Network Map",
+          icon: "fa fa-eye",
+        },
+        {
+          href: "/pwn",
+          title: "Pwn 'em!",
+          icon: "fa fa-terminal",
+        },
+        {
+          component: Seperator,
+        },
+        {
+          header: true,
+          title: "Util",
+          hiddenOnCollapse: true,
+        },
+        {
+          href: "/shells",
+          title: "Shells",
+          icon: "fa fa-hashtag",
+        },
+        {
+          href: "/command-library",
+          title: "Command Library",
+          icon: "fa fa-database",
+        },
+        {
+          href: "/test",
+          title: "Testing",
           icon: "fa fa-lightbulb-o",
         },
       ],
@@ -53,7 +99,6 @@ export default {
   },
   methods: {
     onToggleCollapse(collapsed) {
-      console.log(collapsed);
       this.collapsed = collapsed;
     },
     onItemClick(event, item, node) {
@@ -70,7 +115,56 @@ export default {
 };
 </script>
 
-<style>
+
+<!--
+
+.v-sidebar-menu {
+  background-color: #1a2332;
+}
+
+.v-sidebar-menu .vsm--toggle-btn {
+  background-color: #141d2b;
+}
+
+.vsm--header {
+  color: #ffffff;
+}
+
+.vsm--link.vsm--link_active,
+.vsm--link.vsm--link_exact-active {
+  color: #9fef00;
+}
+
+.vsm--link_level-1.vsm--link_hover,
+.vsm--link_level-1:hover {
+  background-color: green !important;
+}
+
+.v-sidebar-menu.vsm_collapsed .vsm--icon:hover {
+  color: red;
+  background-color: blue;
+}
+
+.v-sidebar-menu .vsm--link_level-1.vsm--link_active,
+.v-sidebar-menu .vsm--link_level-1.vsm--link_exact-active {
+  -webkit-box-shadow: 3px 0 0 0 #9fef00 inset;
+  box-shadow: inset 3px 0 0 0 #9fef00;
+}
+
+.v-sidebar-menu .vsm--link_level-1 .vsm--icon {
+  background-color: #1a2332;
+}
+
+.router-link-exact-active
+  .router-link-active
+  .vsm--link
+  .vsm--link_level-1
+  .vsm--link_hover
+  .vsm--link_active
+  .vsm--link_exact-active {
+  background-color: red;
+}
+
 .vsm--mobile-item {
   display: none; /* Hide weird slide animation when clicking a menu item */
 }
@@ -86,12 +180,12 @@ html {
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
-  background-color: #f2f4f7;
-  color: #262626;
+  background-color: #fafafe;
+  color: #4f5a6e;
 }
 
 #app {
-  padding-left: 175px; /* correlates to the width of the sidebar-menu */
+  padding-left: 185px; /* correlates to the width of the sidebar-menu */
   transition: 0.3s ease;
   height: 100%;
 }
@@ -116,5 +210,4 @@ pre {
   padding: 15px;
   line-height: 1.5;
   overflow: auto;
-}
-</style>
+}-->
