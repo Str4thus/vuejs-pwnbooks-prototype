@@ -1,3 +1,6 @@
+/**
+    General
+**/
 $primary: #9fef00 !default;
 $secondary: #141d2b !default;
 
@@ -8,5 +11,14 @@ $font-size-default: 18px;
 $background-light: #fafafe !default;
 $background-dark: #1a2332 !default;
 
+/**
+    Sidebar Menu
+**/
 $menu-width-expanded: 185px;  /* correlates to the width of the sidebar-menu */
 $menu-width-collapsed: 50px;
+
+
+/** 
+    Console 
+**/
+$console-background: red;

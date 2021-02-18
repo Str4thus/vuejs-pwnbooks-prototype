@@ -44,6 +44,8 @@ import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-php-extras';
 import 'prismjs/components/prism-powershell';
 
+import splitPane from 'vue-splitpane'
+
 
 Vue.config.productionTip = false
 
@@ -54,6 +56,8 @@ VMdEditor.lang.use('en-US', enUS)
 VMdEditor.use(createCopyCodePlugin())
 
 
+Vue.component('split-pane', splitPane);
+
 Vue.use(VMdEditor)
 Vue.use(VueSidebarMenu)
 Vue.use(Vuex)
@@ -63,7 +67,7 @@ const store = new Vuex.Store({
     count: 0
   },
   mutations: {
-    increment (state) {
+    increment(state) {
       state.count++
     }
   }

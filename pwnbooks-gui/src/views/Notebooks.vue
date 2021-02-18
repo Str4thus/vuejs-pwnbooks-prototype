@@ -1,13 +1,22 @@
 <!-- https://code-farmer-i.github.io/vue-markdown-editor/ -->
 
 <template>
-  <v-md-editor
-    class="pwnbook-editor"
-    v-model="text"
-    left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save tip"
-    :codemirror-config="codemirrorConfig"
-  ></v-md-editor>
-
+  <split-pane
+    v-on:resize="onResize"
+    :default-percent="10"
+    :min-percent="10"
+    split="vertical"
+  >
+    <template slot="paneL"> L </template>
+    <template slot="paneR">
+      <v-md-editor
+        class="pwnbook-editor"
+        v-model="text"
+        left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save tip"
+        :codemirror-config="codemirrorConfig"
+      ></v-md-editor>
+    </template>
+  </split-pane>
   <!-- Toggle preview-only and use the preview component <v-md-preview :text="text"></v-md-preview> -->
 </template>
 
@@ -26,12 +35,16 @@ export default {
       },
     };
   },
+  methods: {
+    onResize(newSize) {
+      newSize; //console.log(newSize);
+    }
+  }
 };
 </script>
 
 
 <style lang="scss">
-
 .pwnbook-editor {
   height: 100%;
 }
