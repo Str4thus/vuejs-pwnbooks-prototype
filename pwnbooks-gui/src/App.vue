@@ -10,6 +10,7 @@
         :collapsed="collapsed"
         :show-one-child="true"
         :disableHover="true"
+        :width="'175px'"
         @toggle-collapse="onToggleCollapse"
         @item-click="onItemClick"
       />
@@ -24,26 +25,26 @@ export default {
       menu: [
         {
           header: true,
-          title: "Getting Started",
+          title: "PWNBOOKS",
           hiddenOnCollapse: true,
         },
         {
           href: "/",
           title: "Home",
-          icon: "fa fa-download",
-        },
-        {
-          href: "/about",
-          title: "About",
-          icon: "fa fa-download",
+          icon: "fa fa-home",
         },
         {
           href: "/markdown",
           title: "Markdown",
-          icon: "fa fa-download",
+          icon: "fa fa-pencil",
+        },
+        {
+          href: "/about",
+          title: "About",
+          icon: "fa fa-lightbulb-o",
         },
       ],
-      collapsed: false,
+      collapsed: true,
     };
   },
   mounted() {
@@ -70,7 +71,12 @@ export default {
 </script>
 
 <style>
-body, html {
+.vsm--mobile-item {
+  display: none; /* Hide weird slide animation when clicking a menu item */
+}
+
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -85,7 +91,7 @@ body {
 }
 
 #app {
-  padding-left: 350px;
+  padding-left: 175px; /* correlates to the width of the sidebar-menu */
   transition: 0.3s ease;
   height: 100%;
 }

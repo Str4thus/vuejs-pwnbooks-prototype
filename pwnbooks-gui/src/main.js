@@ -6,13 +6,24 @@ import router from './router'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 
-import VMdEditor from '@kangc/v-md-editor';
-import '@kangc/v-md-editor/lib/style/base-editor.css';
+
+import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
+import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 import enUS from '@kangc/v-md-editor/lib/lang/en-US';
 import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
+import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
+
+import Codemirror from 'codemirror';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/addon/display/placeholder';
+import 'codemirror/addon/selection/active-line';
+import 'codemirror/addon/scroll/simplescrollbars';
+import 'codemirror/addon/scroll/simplescrollbars.css';
+import 'codemirror/lib/codemirror.css';
+
 
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-json';
@@ -39,6 +50,7 @@ import 'prismjs/components/prism-powershell';
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
+VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(vuepressTheme)
 VMdEditor.lang.use('en-US', enUS)
 VMdEditor.use(createCopyCodePlugin())

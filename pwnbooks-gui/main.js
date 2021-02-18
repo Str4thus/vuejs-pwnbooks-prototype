@@ -14,6 +14,9 @@ function createWindow() {
     }
   })
 
+  mainWindow.maximize()
+  // mainWindow.setMenu(null)
+  
   mainWindow.loadURL(
     url.format({
       pathname: path.join(__dirname, `./dist/index.html`),
@@ -25,6 +28,7 @@ function createWindow() {
     mainWindow = null
   })
 }
+
 console.log(app);
 app.on('ready', createWindow)
 
