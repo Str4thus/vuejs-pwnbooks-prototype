@@ -8,7 +8,7 @@
     split="vertical"
   >
     <template slot="paneL">
-      <NotebookList :notebooks="['Flags', 'Credentials', 'Recon', 'Enumeration', 'Foothold', 'User', 'Root', 'IP']" />
+      <NotebookList />
     </template>
 
     <template slot="paneR">

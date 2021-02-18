@@ -1,6 +1,14 @@
 <template>
   <div class="notebook-list-item">
-    <h3>{{ Label }}</h3>
+    <div class="notebook-title">
+      <h2>
+        {{ notebook.name }}
+      </h2>
+    </div>
+
+    <div class="notebook-notes">
+      <p v-for="note in notebook.notes" :key="note">{{ note }}</p>
+    </div>
   </div>
 </template>
 
@@ -10,7 +18,10 @@ import "@/scss/notebookList.scss";
 export default {
   name: "NotebookListItem",
   props: {
-    label: String,
+    notebook: {
+      type: Object,
+      default: () => {},
+    },
   },
 };
 </script>

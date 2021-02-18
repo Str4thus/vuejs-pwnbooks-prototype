@@ -1,9 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import VueSidebarMenu from 'vue-sidebar-menu'
+import VueSidebarMenu from 'vue-sidebar-menu';
 
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
@@ -44,37 +43,26 @@ import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-php-extras';
 import 'prismjs/components/prism-powershell';
 
-import splitPane from 'vue-splitpane'
-
+import splitPane from 'vue-splitpane';
+import store from "./state/store";
 
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
 VMdEditor.Codemirror = Codemirror;
-VMdEditor.use(vuepressTheme)
-VMdEditor.lang.use('en-US', enUS)
-VMdEditor.use(createCopyCodePlugin())
+VMdEditor.use(vuepressTheme);
+VMdEditor.lang.use('en-US', enUS);
+VMdEditor.use(createCopyCodePlugin());
 
 
 Vue.component('split-pane', splitPane);
 
-Vue.use(VMdEditor)
-Vue.use(VueSidebarMenu)
-Vue.use(Vuex)
+Vue.use(VMdEditor);
+Vue.use(VueSidebarMenu);
 
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment(state) {
-      state.count++
-    }
-  }
-})
 
 new Vue({
   router,
-  store: store,
+  store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');

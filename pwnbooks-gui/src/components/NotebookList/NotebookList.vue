@@ -1,22 +1,26 @@
 <template>
   <div class="notebook-list">
-    <h1>{{ this.name }}</h1>
-    <p v-for="label in notebooks" :key="label">{{ label }}</p>
+    <NotebookListItem
+      v-for="notebook in notebooks"
+      :key="notebook"
+      :notebook="notebook"
+    />
   </div>
 </template>
 
 <script>
 import "@/scss/notebookList.scss";
+import NotebookListItem from "./NotebookListItem";
 
 export default {
   name: "NotebookList",
-  props: {
-    notebooks: Array,
+  computed: {
+    notebooks() {
+      return this.$store.getters.notebooks;
+    },
   },
-  data() {
-    return {
-      name: "Blue",
-    };
+  components: {
+    NotebookListItem,
   },
 };
 </script>
