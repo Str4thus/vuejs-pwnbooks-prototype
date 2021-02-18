@@ -2,14 +2,27 @@ let defaultNotes = ["Flags", "Credentials", "Recon", "Enumeration", "Foothold", 
 
 export default {
     state: {
-        notebooks: [{ "name": "Blue", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }, { "name": "Jewel", "notes": defaultNotes }]
+        notebooks: [
+            { "id": 0, "name": "Blue", "notes": defaultNotes, "expanded": false },
+            { "id": 1, "name": "Jewel", "notes": defaultNotes, "expanded": false },
+            { "id": 2, "name": "Jewel", "notes": defaultNotes, "expanded": false },
+            { "id": 3, "name": "Jewel", "notes": defaultNotes, "expanded": false },
+            { "id": 4, "name": "Jewel", "notes": defaultNotes, "expanded": false }
+        ]
     },
     getters: {
         notebooks: state => state.notebooks,
     },
     actions: {
+        toggleNotebook({ commit }, id) {
+            commit('TOGGLE_NOTEBOOK', id);
+        }
     },
     mutations: {
+        TOGGLE_NOTEBOOK(state, id) {
+            let target = state.notebooks.find(notebook => notebook.id == id);
+            target.expanded = !target.expanded;
+        }
     }
 }
 

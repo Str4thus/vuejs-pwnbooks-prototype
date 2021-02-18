@@ -1,12 +1,12 @@
 <template>
   <div class="notebook-list-item">
     <div class="notebook-title">
-      <h2>
-        {{ notebook.name }}
+      <h2 v-on:click="toggleNotebook(notebook['id'])">
+        {{ notebook.name }} {{ notebook.id }}
       </h2>
     </div>
 
-    <div class="notebook-notes">
+    <div v-if="notebook.expanded" class="notebook-notes">
       <p v-for="note in notebook.notes" :key="note">{{ note }}</p>
     </div>
   </div>
@@ -21,6 +21,11 @@ export default {
     notebook: {
       type: Object,
       default: () => {},
+    },
+  },
+  methods: {
+    toggleNotebook: function (id) {
+      this.$store.dispatch("toggleNotebook", id);
     },
   },
 };
