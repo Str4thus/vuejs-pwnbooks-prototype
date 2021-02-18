@@ -7,7 +7,10 @@
     :min-percent="10"
     split="vertical"
   >
-    <template slot="paneL"> L </template>
+    <template slot="paneL">
+      <NotebookList :notebooks="['Flags', 'Credentials', 'Recon', 'Enumeration', 'Foothold', 'User', 'Root', 'IP']" />
+    </template>
+
     <template slot="paneR">
       <v-md-editor
         class="pwnbook-editor"
@@ -22,6 +25,8 @@
 
 
 <script>
+import NotebookList from "../components/NotebookList/NotebookList";
+
 export default {
   data() {
     return {
@@ -38,8 +43,11 @@ export default {
   methods: {
     onResize(newSize) {
       newSize; //console.log(newSize);
-    }
-  }
+    },
+  },
+  components: {
+    NotebookList,
+  },
 };
 </script>
 

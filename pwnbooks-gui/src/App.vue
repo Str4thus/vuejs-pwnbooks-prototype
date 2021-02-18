@@ -34,7 +34,7 @@
 <script>
 import "./scss/app.scss";
 import Seperator from "./components/SidebarMenu/Seperator";
-import Console from "./components/Console/Console";
+import Console from "./components/Console";
 
 export default {
   name: "PWNBOOKS",
