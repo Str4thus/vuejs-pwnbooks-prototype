@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 
@@ -37,14 +38,29 @@ import 'prismjs/components/prism-powershell';
 
 Vue.config.productionTip = false
 
-Vue.use(VueSidebarMenu)
-
+// VueMarkdownEditor
 VMdEditor.use(vuepressTheme)
 VMdEditor.lang.use('en-US', enUS)
 VMdEditor.use(createCopyCodePlugin())
+
+
 Vue.use(VMdEditor)
+Vue.use(VueSidebarMenu)
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
 
 new Vue({
   router,
+  store: store,
   render: h => h(App)
 }).$mount('#app')
