@@ -2,12 +2,17 @@
   <div class="note-editor-wrapper">
     <v-md-editor
       class="note-editor"
-      v-model="activeNoteContent"
       left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save tip"
+      v-model="activeNoteContent"
+      v-on:change="onChange"
       :codemirror-config="codemirrorConfig"
     ></v-md-editor>
   </div>
 </template>
+
+<!--
+Create own anchors: https://code-farmer-i.github.io/vue-markdown-editor/senior/anchor.html
+-->
 
 <script>
 import "../scss/noteEditor.scss";
@@ -25,8 +30,9 @@ export default {
     };
   },
   methods: {
-    onResize(newSize) {
-      newSize; //console.log(newSize);
+    onChange(text, html) {
+      html;
+      this.$store.dispatch("updateNoteContent", text);
     },
   },
   computed: {

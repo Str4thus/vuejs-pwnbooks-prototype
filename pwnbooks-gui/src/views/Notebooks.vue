@@ -24,6 +24,11 @@ import NotebookList from "../components/NotebookList/NotebookList";
 import NoteEditor from "../components/NoteEditor";
 
 export default {
+  methods: {
+    onResize(newSize) {
+      newSize; //console.log(newSize);
+    },
+  },
   components: {
     NotebookList,
     NoteEditor,

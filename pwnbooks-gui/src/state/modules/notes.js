@@ -56,6 +56,13 @@ export default {
             let previous = getters.activeNote;
 
             commit("SELECT_NOTE", { target, previous });
+        },
+        updateNoteContent({ commit, getters }, content) {
+            let target = getters.activeNote;
+
+            if (target != undefined) {
+                commit("UPDATE_NOTE_CONTENT", { target, content })
+            }
         }
     },
     mutations: {
@@ -65,6 +72,9 @@ export default {
             }
 
             target.active = true;
+        },
+        UPDATE_NOTE_CONTENT(state, { target, content }) {
+            target.content = content;
         }
     }
 }
