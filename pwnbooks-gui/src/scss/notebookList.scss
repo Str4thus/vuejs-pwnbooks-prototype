@@ -3,27 +3,42 @@
     max-height: 100%;
 }
 
+.notebook-notes {
+    margin: 0;
+    background-color: $background-light;
+}
+
+.notebook-note {
+    cursor: pointer;
+    color: $text-color-light;
+    background-color: $background-dark;
+
+    h3 {
+        margin: 0;
+        padding-left: 5%;
+    }
+
+    &:hover {
+        background-color: $primary;
+        color: $text-color-default;
+    }
+}
+
 .notebook-title {
     color: $text-color-notes;
-    background-color: $background-dark;
+    background-color: $tertiary;
 
     user-select: none;
     text-align: center;
 
     padding-top: 2.5%;
     padding-bottom: 2.5%;
-}
 
-.notebook-notes {
-    margin: 0;
-    background-color: $background-light;
-}
-
-.notebook-title {
     cursor: pointer;
     position: relative;
     background-clip: padding-box;
     border: $notebook-title-border-width solid transparent;
+
     &:before {
         content: "";
         position: absolute;
@@ -36,20 +51,20 @@
         border-radius: inherit;
         background: linear-gradient(to left, $background-dark, $primary);
     }
-}
 
-.notebook-title h2 {
-    margin: 0;
-}
+    &:hover {
+        background-color: $tertiary;
+    }
 
-.note h4 {
-    margin: 0;
+    h2 {
+        margin: 0;
+    }
 }
 
 *::-webkit-scrollbar {
-    width: $scrollbar-width;
+    width: 0px;
 }
 
 *::-webkit-scrollbar-thumb {
-    border: 3px solid $scrollbar-color;
+    border: 0px solid $scrollbar-color;
 }

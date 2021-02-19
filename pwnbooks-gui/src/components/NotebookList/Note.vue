@@ -1,6 +1,6 @@
 <template>
-  <div class="note">
-    <h4>{{ note.label }}</h4>
+  <div class="notebook-note">
+    <h3>{{ note.label }}</h3>
   </div>
 </template>
 
