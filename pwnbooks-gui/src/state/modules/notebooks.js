@@ -1,4 +1,14 @@
-let defaultNotes = ["Flags", "Credentials", "Recon", "Enumeration", "Foothold", "User", "Root", "IP"];
+
+const defaultNotes = [
+    { "label": "Flags", "content": "display the flags" },
+    { "label": "Credentials", "content": "get the creds" },
+    { "label": "Recon", "content": "do the recon" },
+    { "label": "Enumeration", "content": "have fun enumeration" },
+    { "label": "Foothold", "content": "step in" },
+    { "label": "User", "content": "i am you" },
+    { "label": "Root", "content": "i am god" },
+    { "label": "IP", "content": "where to go" },
+]
 
 export default {
     state: {

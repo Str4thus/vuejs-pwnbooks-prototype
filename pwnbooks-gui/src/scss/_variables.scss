@@ -3,6 +3,7 @@
 **/
 $primary: #9fef00 !default;
 $secondary: #141d2b !default;
+$tertiary: #111721 !default;
 
 $text-color-light: #fff !default;
 $text-color-default: #4f5a6e !default;
@@ -14,11 +15,18 @@ $background-dark: #1a2332 !default;
 /**
     Sidebar Menu
 **/
-$menu-width-expanded: 185px;  /* correlates to the width of the sidebar-menu */
+$menu-width-expanded: 185px; /* correlates to the width of the sidebar-menu */
 $menu-width-collapsed: 50px;
-
 
 /** 
     Console 
 **/
 $console-background: #333;
+
+/**
+    Notebooks
+**/
+$text-color-notes: $text-color-light;
+$scrollbar-color: #b4b4b4;
+$scrollbar-width: 5px;
+$notebook-title-border-width: 1px;
