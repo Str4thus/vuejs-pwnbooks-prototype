@@ -1,14 +1,14 @@
 export default {
     state: {
         notes: [
-            { "id": 0, "bookId": 0, "label": "# Flags", "content": "display the flags", "active": false },
-            { "id": 1, "bookId": 0, "label": "# Credentials", "content": "get the creds", "active": false },
-            { "id": 2, "bookId": 0, "label": "# Recon", "content": "do the recon", "active": false },
-            { "id": 3, "bookId": 0, "label": "# Enumeration", "content": "have fun enumeration", "active": false },
-            { "id": 4, "bookId": 0, "label": "# Foothold", "content": "step in", "active": false },
-            { "id": 5, "bookId": 0, "label": "# User", "content": "i am you", "active": false },
-            { "id": 6, "bookId": 0, "label": "# Root", "content": "i am god", "active": false },
-            { "id": 7, "bookId": 0, "label": "# IP", "content": "where to go", "active": false },
+            { "id": 0, "bookId": 0, "label": "# Flags", "content": "# Flags\n", "active": false },
+            { "id": 1, "bookId": 0, "label": "# Credentials", "content": "# Credentials\n", "active": false },
+            { "id": 2, "bookId": 0, "label": "# Recon", "content": "# Recon\n", "active": false },
+            { "id": 3, "bookId": 0, "label": "# Enumeration", "content": "# Enumeration\n", "active": false },
+            { "id": 4, "bookId": 0, "label": "# Foothold", "content": "# Foothold\n", "active": false },
+            { "id": 5, "bookId": 0, "label": "# User", "content": "# User\n", "active": false },
+            { "id": 6, "bookId": 0, "label": "# Root", "content": "# Root\n", "active": false },
+            { "id": 7, "bookId": 0, "label": "# IP", "content": "# IP\n", "active": false },
 
 
             { "id": 8, "bookId": 1, "label": "# Flags", "content": "display the flags", "active": false },
