@@ -20,8 +20,13 @@
 
     &:hover {
         background-color: $primary;
-        color: $text-color-default;
+        color: $tertiary;
     }
+}
+
+.active-note {
+    background-color: $primary;
+    color: $tertiary;
 }
 
 .notebook-title {

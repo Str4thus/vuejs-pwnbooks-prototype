@@ -1,23 +1,11 @@
-
-const defaultNotes = [
-    { "label": "# Flags", "content": "display the flags" },
-    { "label": "# Credentials", "content": "get the creds" },
-    { "label": "# Recon", "content": "do the recon" },
-    { "label": "# Enumeration", "content": "have fun enumeration" },
-    { "label": "# Foothold", "content": "step in" },
-    { "label": "# User", "content": "i am you" },
-    { "label": "# Root", "content": "i am god" },
-    { "label": "# IP", "content": "where to go" },
-]
-
 export default {
     state: {
         notebooks: [
-            { "id": 0, "name": "Blue", "notes": defaultNotes, "expanded": false },
-            { "id": 1, "name": "Jewel", "notes": defaultNotes, "expanded": false },
-            { "id": 2, "name": "Jewel", "notes": defaultNotes, "expanded": false },
-            { "id": 3, "name": "Jewel", "notes": defaultNotes, "expanded": false },
-            { "id": 4, "name": "Jewel", "notes": defaultNotes, "expanded": false }
+            { "id": 0, "name": "Blue", "expanded": false },
+            { "id": 1, "name": "Jewel", "expanded": false },
+            { "id": 2, "name": "Jewel", "expanded": false },
+            { "id": 3, "name": "Jewel", "expanded": false },
+            { "id": 4, "name": "Jewel", "expanded": false }
         ]
     },
     getters: {
@@ -40,7 +28,6 @@ export default {
 /**
 export default {
     state: {
-
         username: ''
     },
     getters: {

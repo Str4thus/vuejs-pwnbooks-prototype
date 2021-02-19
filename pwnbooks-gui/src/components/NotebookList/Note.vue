@@ -1,5 +1,8 @@
 <template>
-  <div class="notebook-note">
+  <div
+    v-on:click="selectNote(note.id)"
+    :class="['notebook-note', note.active ? 'active-note' : '']"
+  >
     <h3>{{ note.label }}</h3>
   </div>
 </template>
@@ -12,6 +15,11 @@ export default {
   props: {
     note: Object,
     default: () => {},
+  },
+  methods: {
+    selectNote: function (id) {
+      this.$store.dispatch("selectNote", id);
+    },
   },
 };
 </script>

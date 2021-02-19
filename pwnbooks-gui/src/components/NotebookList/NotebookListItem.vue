@@ -5,7 +5,11 @@
     </div>
 
     <div v-if="notebook.expanded" class="notebook-notes">
-      <Note v-for="note in notebook.notes" :key="note" :note="note" />
+      <Note
+        v-for="note in getNotesForBook(notebook.id)"
+        :key="note"
+        :note="note"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +29,9 @@ export default {
   methods: {
     toggleNotebook: function (id) {
       this.$store.dispatch("toggleNotebook", id);
+    },
+    getNotesForBook: function (bookId) {
+      return this.$store.getters.getNotesByBookId(bookId);
     },
   },
   components: {
