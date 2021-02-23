@@ -46,6 +46,9 @@ import 'prismjs/components/prism-powershell';
 import splitPane from 'vue-splitpane';
 import store from "./state/store";
 
+import 'vue-simple-context-menu/dist/vue-simple-context-menu.css';
+import VueSimpleContextMenu from 'vue-simple-context-menu';
+
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
@@ -54,7 +57,7 @@ VMdEditor.use(vuepressTheme);
 VMdEditor.lang.use('en-US', enUS);
 VMdEditor.use(createCopyCodePlugin());
 
-
+Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
 Vue.component('split-pane', splitPane);
 
 Vue.use(VMdEditor);
