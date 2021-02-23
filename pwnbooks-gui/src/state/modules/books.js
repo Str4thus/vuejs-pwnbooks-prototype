@@ -3,9 +3,9 @@ export default {
         books: [
             { "id": 0, "name": "Blue", "expanded": false },
             { "id": 1, "name": "Jewel", "expanded": false },
-            { "id": 2, "name": "Jewel", "expanded": false },
-            { "id": 3, "name": "Jewel", "expanded": false },
-            { "id": 4, "name": "Jewhbsfdhbklsdfhblsdhblfsadhblfsadhblfashbldflasdflhbjsadfhblasdhblfasldfhbljasdfhbasdhblfashbfashbdfhblel", "expanded": false }
+            { "id": 2, "name": "Feline", "expanded": false },
+            { "id": 3, "name": "Academy", "expanded": false },
+            { "id": 4, "name": "Crossfit", "expanded": false }
         ]
     },
     getters: {

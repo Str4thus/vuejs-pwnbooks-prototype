@@ -37,8 +37,8 @@
     user-select: none;
     text-align: center;
 
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 
     cursor: pointer;
     position: relative;
@@ -63,7 +63,7 @@
     }
 
     h3 {
-        line-break: auto;
+        word-wrap: break-word;
         margin: 0;
     }
 }
