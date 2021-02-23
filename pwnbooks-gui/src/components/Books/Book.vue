@@ -3,7 +3,7 @@
     <div
       v-on:click="toggleBook(book['id'])"
       class="book-title"
-      @contextmenu.prevent.stop="onrightclick($event, book.id)"
+      @contextmenu.prevent.stop="onrightclick($event, book)"
     >
       <h2>{{ book.name }}</h2>
     </div>

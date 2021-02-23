@@ -21,7 +21,6 @@ import 'codemirror/addon/scroll/simplescrollbars';
 import 'codemirror/addon/scroll/simplescrollbars.css';
 import 'codemirror/lib/codemirror.css';
 
-
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-python';
@@ -49,6 +48,8 @@ import store from "./state/store";
 import 'vue-simple-context-menu/dist/vue-simple-context-menu.css';
 import VueSimpleContextMenu from 'vue-simple-context-menu';
 
+import VModal from 'vue-js-modal'
+
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
@@ -61,6 +62,9 @@ Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
 Vue.component('split-pane', splitPane);
 
 Vue.use(VMdEditor);
+Vue.use(VModal, {
+  dialog: true,
+});
 Vue.use(VueSidebarMenu);
 
 

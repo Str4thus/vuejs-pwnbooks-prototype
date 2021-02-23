@@ -29,6 +29,8 @@
       @option-clicked="optionClicked"
     >
     </vue-simple-context-menu>
+
+    <v-dialog />
   </div>
 </template>
 
@@ -75,11 +77,11 @@ export default {
       return this.$store.getters.getNotesByBookId(bookId);
     },
 
-    openBookCtx: function (event, item) {
-      this.$refs.bookCtx.showMenu(event, item);
+    openBookCtx: function (event, book) {
+      this.$refs.bookCtx.showMenu(event, book);
     },
-    openNoteCtx: function (event, item) {
-      this.$refs.noteCtx.showMenu(event, item);
+    openNoteCtx: function (event, note) {
+      this.$refs.noteCtx.showMenu(event, note);
     },
     optionClicked: function (event) {
       switch (event.option.slug) {
@@ -104,21 +106,41 @@ export default {
       }
     },
 
-    addBook: function (bookId) {
-      console.log("addBook", bookId);
+    addBook: function (book) {
+      console.log("addBook", book);
     },
-    renameBook: function (bookId) {
-      console.log("renameBook", bookId);
+    renameBook: function (book) {
+      console.log("renameBook", book);
     },
-    deleteBook: function (bookId) {
-      console.log("deleteBook", bookId);
-      this.$store.dispatch("deleteBook", bookId);
+    deleteBook: function (book) {
+      this.$modal.show("dialog", {
+        title: "Delete Book '" + book.name + "'",
+        text:
+          "Are you sure you want to delete " +
+          book.name +
+          " and all its notes? <br><br> <b> (Cannot be restored) </b>",
+        buttons: [
+          {
+            title: "Confirm",
+            handler: () => {
+              this.$store.dispatch("deleteBook", book.id);
+              this.$modal.hide("dialog");
+            },
+          },
+          {
+            title: "Cancel",
+            handler: () => {
+              this.$modal.hide("dialog");
+            },
+          },
+        ],
+      });
     },
-    addNote: function (noteId) {
-      console.log("addNote", noteId);
+    addNote: function (note) {
+      console.log("addNote", note);
     },
-    deleteNote: function (noteId) {
-      console.log("deleteNote", noteId);
+    deleteNote: function (note) {
+      console.log("deleteNote", note);
     },
   },
   computed: {
