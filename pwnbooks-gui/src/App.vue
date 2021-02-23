@@ -60,8 +60,8 @@ export default {
           hiddenOnCollapse: true,
         },
         {
-          href: "/notebooks",
-          title: "Notebooks",
+          href: "/books",
+          title: "Books",
           icon: "fa fa-pencil",
         },
         {

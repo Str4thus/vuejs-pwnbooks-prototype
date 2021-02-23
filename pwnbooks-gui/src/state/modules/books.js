@@ -1,6 +1,6 @@
 export default {
     state: {
-        notebooks: [
+        books: [
             { "id": 0, "name": "Blue", "expanded": false },
             { "id": 1, "name": "Jewel", "expanded": false },
             { "id": 2, "name": "Jewel", "expanded": false },
@@ -9,17 +9,26 @@ export default {
         ]
     },
     getters: {
-        notebooks: state => state.notebooks,
+        books: state => state.books,
+        getBookById: (state) => (id) => {
+            return state.books.find(book => book.id == id);
+        }
     },
     actions: {
-        toggleNotebook({ commit }, id) {
-            commit('TOGGLE_NOTEBOOK', id);
+        toggleBook({ commit, getters }, id) {
+            let target = getters.getBookById(id);
+            commit('TOGGLE_BOOK', target);
+        },
+        deleteBook({ commit }, id) {
+            commit('DELETE_BOOK', id);
         }
     },
     mutations: {
-        TOGGLE_NOTEBOOK(state, id) {
-            let target = state.notebooks.find(notebook => notebook.id == id);
+        TOGGLE_BOOK(_, target) {
             target.expanded = !target.expanded;
+        },
+        DELETE_BOOK(state, id) {
+            state.books = state.books.filter(book => book.id != id);
         }
     }
 }

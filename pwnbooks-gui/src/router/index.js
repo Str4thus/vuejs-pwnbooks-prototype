@@ -11,9 +11,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/notebooks',
-    name: 'Notebooks',
-    component: () => import('../views/Notebooks.vue')
+    path: '/books',
+    name: 'Books',
+    component: () => import('../views/Books.vue')
   },
   {
     path: '/command-library',

@@ -8,7 +8,7 @@
     split="vertical"
   >
     <template slot="paneL">
-      <NotebookList />
+      <BookList />
     </template>
 
     <template slot="paneR">
@@ -20,7 +20,7 @@
 
 
 <script>
-import NotebookList from "../components/NotebookList/NotebookList";
+import BookList from "../components/Books/BookList";
 import NoteEditor from "../components/NoteEditor";
 
 export default {
@@ -30,7 +30,7 @@ export default {
     },
   },
   components: {
-    NotebookList,
+    BookList,
     NoteEditor,
   },
 };

@@ -1,14 +1,14 @@
-.notebook-list {
+.book-list {
     overflow-y: auto;
     max-height: 100%;
 }
 
-.notebook-notes {
+.book-notes {
     margin: 0;
     background-color: $background-light;
 }
 
-.notebook-note {
+.book-note {
     cursor: pointer;
     color: $text-color-light;
     background-color: $background-dark;
@@ -29,7 +29,7 @@
     color: $tertiary;
 }
 
-.notebook-title {
+.book-title {
     color: $text-color-notes;
     background-color: $tertiary;
 
@@ -42,7 +42,7 @@
     cursor: pointer;
     position: relative;
     background-clip: padding-box;
-    border: $notebook-title-border-width solid transparent;
+    border: $book-title-border-width solid transparent;
 
     &:before {
         content: "";
@@ -52,7 +52,7 @@
         bottom: 0;
         left: 0;
         z-index: -1;
-        margin: -$notebook-title-border-width;
+        margin: -$book-title-border-width;
         border-radius: inherit;
         background: linear-gradient(to left, $background-dark, $primary);
     }
