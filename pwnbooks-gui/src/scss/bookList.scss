@@ -14,7 +14,7 @@
     color: $text-color-default;
     background-color: $background-light;
 
-    h3 {
+    h4 {
         margin: 0;
         padding-left: 5%;
     }
@@ -31,7 +31,7 @@
 }
 
 .book-title {
-    color: $text-color-notes;
+    color: $text-color-light;
     background-color: $background-dark;
 
     user-select: none;
@@ -73,5 +73,5 @@
 }
 
 *::-webkit-scrollbar-thumb {
-    border: 0px solid $scrollbar-color;
+    border: 0px solid #000;
 }
