@@ -5,7 +5,7 @@
       class="book-title"
       @contextmenu.prevent.stop="onrightclick($event, book)"
     >
-      <h2>{{ book.name }}</h2>
+      <h3>{{ book.name }}</h3>
     </div>
 
     <div v-if="book.expanded" class="book-notes">

@@ -5,7 +5,7 @@ export default {
             { "id": 1, "name": "Jewel", "expanded": false },
             { "id": 2, "name": "Jewel", "expanded": false },
             { "id": 3, "name": "Jewel", "expanded": false },
-            { "id": 4, "name": "Jewel", "expanded": false }
+            { "id": 4, "name": "Jewhbsfdhbklsdfhblsdhblfsadhblfsadhblfashbldflasdflhbjsadfhblasdhblfasldfhbljasdfhbasdhblfashbfashbdfhblel", "expanded": false }
         ]
     },
     getters: {

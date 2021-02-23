@@ -37,6 +37,8 @@
 
 <script>
 import "@/scss/bookList.scss";
+import "@/scss/modals.scss";
+
 import Book from "./Book";
 import Note from "./Note";
 import AddBookModal from "../modals/AddBookModal";

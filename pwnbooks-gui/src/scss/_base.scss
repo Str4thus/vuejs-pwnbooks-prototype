@@ -1,1 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
+
+.vue-simple-context-menu {
+    background-color: $tertiary;
+    width: 130px;
+    
+    &--active {
+    }
+
+    &__item {
+        color: $text-color-light;
+        &:hover {
+            background-color: $primary;
+        }
+    }
+
+    &__divider {
+    }
+}

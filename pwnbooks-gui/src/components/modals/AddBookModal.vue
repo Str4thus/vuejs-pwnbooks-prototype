@@ -20,17 +20,21 @@ export default {
   data() {
     return {
       bookTitle: "",
+      tryToCreate: false,
     };
   },
   methods: {
     createBook: function () {
-      console.log(this.bookTitle);
+      this.tryToCreate = true;
       this.$modal.hide("add-book-modal");
     },
     beforeClose(event) {
-      if (this.bookTitle.trim() == "") {
+      if (this.tryToCreate && this.bookTitle.trim() == "") {
+        this.tryToCreate = false;
         event.cancel();
       }
+
+      this.bookTitle = "";
     },
   },
 };

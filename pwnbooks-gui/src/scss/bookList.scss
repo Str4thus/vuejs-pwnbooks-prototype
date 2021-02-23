@@ -1,5 +1,6 @@
 .book-list {
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 100%;
 }
 
@@ -10,8 +11,8 @@
 
 .book-note {
     cursor: pointer;
-    color: $text-color-light;
-    background-color: $background-dark;
+    color: $text-color-default;
+    background-color: $background-light;
 
     h3 {
         margin: 0;
@@ -31,7 +32,7 @@
 
 .book-title {
     color: $text-color-notes;
-    background-color: $tertiary;
+    background-color: $background-dark;
 
     user-select: none;
     text-align: center;
@@ -61,7 +62,8 @@
         background-color: $tertiary;
     }
 
-    h2 {
+    h3 {
+        line-break: auto;
         margin: 0;
     }
 }
