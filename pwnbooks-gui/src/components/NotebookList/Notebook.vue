@@ -19,7 +19,7 @@ import "@/scss/notebookList.scss";
 import Note from "./Note";
 
 export default {
-  name: "NotebookListItem",
+  name: "Notebook",
   props: {
     notebook: {
       type: Object,

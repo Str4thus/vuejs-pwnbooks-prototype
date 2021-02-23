@@ -1,6 +1,6 @@
 <template>
   <div class="notebook-list">
-    <NotebookListItem
+    <Notebook
       v-for="notebook in notebooks"
       :key="notebook"
       :notebook="notebook"
@@ -10,7 +10,7 @@
 
 <script>
 import "@/scss/notebookList.scss";
-import NotebookListItem from "./NotebookListItem";
+import Notebook from "./Notebook";
 
 export default {
   name: "NotebookList",
@@ -20,7 +20,7 @@ export default {
     },
   },
   components: {
-    NotebookListItem,
+    Notebook,
   },
 };
 </script>
