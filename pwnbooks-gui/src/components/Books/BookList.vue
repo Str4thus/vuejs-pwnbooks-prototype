@@ -31,6 +31,7 @@
     </vue-simple-context-menu>
 
     <v-dialog />
+    <AddBookModal />
   </div>
 </template>
 
@@ -38,6 +39,7 @@
 import "@/scss/bookList.scss";
 import Book from "./Book";
 import Note from "./Note";
+import AddBookModal from "../modals/AddBookModal";
 
 export default {
   name: "BookList",
@@ -106,19 +108,23 @@ export default {
       }
     },
 
-    addBook: function (book) {
-      console.log("addBook", book);
+    addBook: function () {
+      this.$modal.show("add-book-modal");
+      console.log("addBook");
+    },
+    addNote: function (note) {
+      console.log("addNote", note);
     },
     renameBook: function (book) {
       console.log("renameBook", book);
     },
     deleteBook: function (book) {
       this.$modal.show("dialog", {
-        title: "Delete Book '" + book.name + "'",
+        title: "Delete Book: '" + book.name + "'",
         text:
-          "Are you sure you want to delete " +
+          "Are you sure you want to delete '" +
           book.name +
-          " and all its notes? <br><br> <b> (Cannot be restored) </b>",
+          "' and all its notes? <br><br> <b> (Cannot be restored) </b>",
         buttons: [
           {
             title: "Confirm",
@@ -136,11 +142,29 @@ export default {
         ],
       });
     },
-    addNote: function (note) {
-      console.log("addNote", note);
-    },
     deleteNote: function (note) {
-      console.log("deleteNote", note);
+      this.$modal.show("dialog", {
+        title: "Delete Note: '" + note.label + "'",
+        text:
+          "Are you sure you want to delete '" +
+          note.label +
+          "'<br><br> <b> (Cannot be restored) </b>",
+        buttons: [
+          {
+            title: "Confirm",
+            handler: () => {
+              // dispatch to store
+              this.$modal.hide("dialog");
+            },
+          },
+          {
+            title: "Cancel",
+            handler: () => {
+              this.$modal.hide("dialog");
+            },
+          },
+        ],
+      });
     },
   },
   computed: {
@@ -151,6 +175,7 @@ export default {
   components: {
     Book,
     Note,
+    AddBookModal,
   },
 };
 </script>
