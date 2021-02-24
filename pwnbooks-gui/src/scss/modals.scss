@@ -1,0 +1,18 @@
+.vue-dialog-content {
+    color: $text-color-light;
+    background-color: $background-dark;
+}
+
+.neutral-button {
+    color: $text-color-light;
+    background-color: $tertiary;
+
+    &:hover {
+        background-color: $background-dark;
+    }
+}
+
+.positive-button {
+    color: $text-color-default;
+    background-color: $primary;
+}

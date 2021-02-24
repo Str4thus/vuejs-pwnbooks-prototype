@@ -3,17 +3,11 @@
 .vue-simple-context-menu {
     background-color: $tertiary;
     width: 130px;
-    
-    &--active {
-    }
 
     &__item {
         color: $text-color-light;
         &:hover {
             background-color: $primary;
         }
-    }
-
-    &__divider {
     }
 }

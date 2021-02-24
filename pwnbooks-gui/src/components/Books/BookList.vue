@@ -130,6 +130,7 @@ export default {
         buttons: [
           {
             title: "Confirm",
+            class: "vue-dialog-button positive-button",
             handler: () => {
               this.$store.dispatch("deleteBook", book.id);
               this.$modal.hide("dialog");
@@ -137,6 +138,7 @@ export default {
           },
           {
             title: "Cancel",
+            class: "vue-dialog-button neutral-button",
             handler: () => {
               this.$modal.hide("dialog");
             },
