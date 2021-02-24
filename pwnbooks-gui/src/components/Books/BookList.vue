@@ -1,5 +1,9 @@
 <template>
   <div class="book-list">
+    <div id="book-list-header-section">
+      <h2 class="book-list-header">Books <i class="add-icon fa fa-plus-square pull-right" @click="addBook"> </i></h2>
+    </div>
+
     <Book
       v-for="book in books"
       :key="book.id"
@@ -48,10 +52,6 @@ export default {
   data() {
     return {
       bookOptions: [
-        {
-          name: "Add Book",
-          slug: "book-add",
-        },
         {
           name: "Add Note",
           slug: "note-add",

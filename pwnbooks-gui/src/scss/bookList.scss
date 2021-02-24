@@ -1,3 +1,28 @@
+#book-list-header-section {
+    background-color: $background-dark;
+
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 5%;
+
+    border: 4px outset $primary;
+}
+
+.book-list-header {
+    color: $text-color-light;
+    margin: 0;
+}
+
+.add-icon {
+    margin-right: 10px;
+    padding-top: 5px;
+
+    &:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+}
+
 .book-list {
     overflow-y: auto;
     overflow-x: hidden;
