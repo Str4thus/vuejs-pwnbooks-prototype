@@ -11,7 +11,7 @@ export default {
             { "id": 7, "bookId": 0, "label": "# IP", "content": "# IP\n", "active": false },
 
 
-            { "id": 8, "bookId": 1, "label": "# Flags", "content": "display the flags", "active": false },
+            { "id": 8, "bookId": 1, "label": "# asdf", "content": "display the flags", "active": false },
             { "id": 9, "bookId": 1, "label": "# Credentials", "content": "get the creds", "active": false },
             { "id": 10, "bookId": 1, "label": "# Recon", "content": "do the recon", "active": false },
             { "id": 11, "bookId": 1, "label": "# Enumeration", "content": "have fun enumeration", "active": false },
@@ -21,7 +21,7 @@ export default {
             { "id": 15, "bookId": 1, "label": "# IP", "content": "where to go", "active": false },
 
 
-            { "id": 16, "bookId": 2, "label": "# Flags", "content": "display the flags", "active": false },
+            { "id": 16, "bookId": 2, "label": "# yxcv", "content": "display the flags", "active": false },
             { "id": 17, "bookId": 2, "label": "# Credentials", "content": "get the creds", "active": false },
             { "id": 18, "bookId": 2, "label": "# Recon", "content": "do the recon", "active": false },
             { "id": 19, "bookId": 2, "label": "# Enumeration", "content": "have fun enumeration", "active": false },
@@ -63,18 +63,25 @@ export default {
             if (target != undefined) {
                 commit("UPDATE_NOTE_CONTENT", { target, content })
             }
-        }
+        },
+        updateNoteOrder({ commit }, reorderedList) {
+            commit("UPDATE_NOTE_ORDER", reorderedList)
+        },
     },
     mutations: {
-        SELECT_NOTE(state, { target, previous }) {
+        SELECT_NOTE(_, { target, previous }) {
             if (previous != undefined) {
                 previous.active = false;
             }
 
             target.active = true;
         },
-        UPDATE_NOTE_CONTENT(state, { target, content }) {
+        UPDATE_NOTE_CONTENT(_, { target, content }) {
             target.content = content;
-        }
+        },
+        UPDATE_NOTE_ORDER(state, reorderedList) {
+            console.log(reorderedList);
+            state.notes = reorderedList;
+        },
     }
 }

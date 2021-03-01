@@ -1,22 +1,34 @@
 <template>
   <div class="book-list">
     <div id="book-list-header-section">
-      <h2 class="book-list-header">Books <i class="add-icon fa fa-plus-square pull-right" @click="addBook"> </i></h2>
+      <h2 class="book-list-header">
+        Books
+        <i class="add-icon fa fa-plus-square pull-right" @click="addBook"> </i>
+      </h2>
     </div>
 
-    <Book
-      v-for="book in books"
-      :key="book.id"
-      :book="book"
-      :onrightclick="openBookCtx"
+    <draggable
+      v-model="books"
+      group="booklist"
+      @start="drag = true"
+      @end="drag = false"
     >
-      <Note
-        v-for="note in getNotesForBook(book.id)"
-        :key="note.id"
-        :note="note"
-        :onrightclick="openNoteCtx"
-      />
-    </Book>
+      <Book
+        v-for="book in books"
+        :key="book.id"
+        :book="book"
+        :onrightclick="openBookCtx"
+      >
+        <draggable v-model="notes">
+          <Note
+            v-for="note in getNotesForBook(book.id)"
+            :key="note.id"
+            :note="note"
+            :onrightclick="openNoteCtx"
+          />
+        </draggable>
+      </Book>
+    </draggable>
 
     <vue-simple-context-menu
       :elementId="'bookCtxId'"
@@ -46,6 +58,7 @@ import "@/scss/modals.scss";
 import Book from "./Book";
 import Note from "./Note";
 import AddBookModal from "../modals/AddBookModal";
+import draggable from "vuedraggable";
 
 export default {
   name: "BookList",
@@ -172,14 +185,20 @@ export default {
     },
   },
   computed: {
-    books() {
-      return this.$store.getters.books;
+    books: {
+      get() {
+        return this.$store.getters.books;
+      },
+      set(newValue) {
+        this.$store.dispatch("updateBookOrder", newValue);
+      },
     },
   },
   components: {
     Book,
     Note,
     AddBookModal,
+    draggable,
   },
 };
 </script>

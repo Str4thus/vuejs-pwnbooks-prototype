@@ -21,6 +21,9 @@ export default {
         },
         deleteBook({ commit }, id) {
             commit('DELETE_BOOK', id);
+        },
+        updateBookOrder({ commit }, reorderedList) {
+            commit("UPDATE_BOOK_ORDER", reorderedList)
         }
     },
     mutations: {
@@ -29,6 +32,9 @@ export default {
         },
         DELETE_BOOK(state, id) {
             state.books = state.books.filter(book => book.id != id);
+        },
+        UPDATE_BOOK_ORDER(state, reorderedList) {
+            state.books = reorderedList;
         }
     }
 }
