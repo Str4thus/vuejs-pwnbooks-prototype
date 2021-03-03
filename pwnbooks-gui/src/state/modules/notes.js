@@ -57,6 +57,19 @@ export default {
 
             commit("SELECT_NOTE", { target, previous });
         },
+        addNote({ commit, getters }, { title, bookId }) {
+            let newNote = {
+                id: getters.notes.length + 2,
+                bookId: bookId,
+                label: "# " + title,
+                content: "# " + title,
+                active: false,
+            }
+            commit("ADD_NOTE", newNote);
+        },
+        deleteNote({ commit }, id) {
+            commit('DELETE_NOTE', id);
+        },
         updateNoteContent({ commit, getters }, content) {
             let target = getters.activeNote;
 
@@ -67,7 +80,7 @@ export default {
         updateNoteOrder({ commit }, reorderedList) {
             console.log(reorderedList);
             commit("UPDATE_NOTE_ORDER", reorderedList)
-        },
+        }
     },
     mutations: {
         SELECT_NOTE(_, { target, previous }) {
@@ -77,11 +90,17 @@ export default {
 
             target.active = true;
         },
+        ADD_NOTE(state, newNote) {
+            state.notes.push(newNote);
+        },
+        DELETE_NOTE(state, id) {
+            state.notes = state.notes.filter(note => note.id != id);
+        },
         UPDATE_NOTE_CONTENT(_, { target, content }) {
             target.content = content;
         },
         UPDATE_NOTE_ORDER(state, reorderedList) {
             state.notes = reorderedList;
-        },
+        }
     }
 }

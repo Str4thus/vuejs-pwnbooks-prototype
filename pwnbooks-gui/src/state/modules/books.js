@@ -21,12 +21,15 @@ export default {
         },
         addBook({ commit, getters }, bookName) {
             let newBook = {
-                "id": getters.books.length + 1,
+                "id": getters.books.length + 2,
                 "name": bookName,
                 "expanded": false,
             }
 
             commit('ADD_BOOK', newBook);
+        },
+        renameBook({ commit, getters }, { bookId, newName }) {
+            commit("RENAME_BOOK", { target: getters.getBookById(bookId), newName: newName });
         },
         deleteBook({ commit }, id) {
             commit('DELETE_BOOK', id);
@@ -47,6 +50,9 @@ export default {
         },
         ADD_BOOK(state, newBook) {
             state.books.push(newBook);
+        },
+        RENAME_BOOK(_, { target, newName }) {
+            target.name = newName;
         }
     }
 }

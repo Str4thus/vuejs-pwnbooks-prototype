@@ -49,6 +49,9 @@
 
     <v-dialog />
     <AddBookModal />
+    <RenameBookModal />
+
+    <AddNoteModal />
   </div>
 </template>
 
@@ -59,6 +62,8 @@ import "@/scss/modals.scss";
 import Book from "./Book";
 import Note from "./Note";
 import AddBookModal from "../modals/AddBookModal";
+import AddNoteModal from "../modals/AddNoteModal";
+import RenameBookModal from "../modals/RenameBookModal";
 import draggable from "vuedraggable";
 
 export default {
@@ -126,13 +131,12 @@ export default {
 
     addBook: function () {
       this.$modal.show("add-book-modal");
-      console.log("addBook");
     },
-    addNote: function (note) {
-      console.log("addNote", note);
+    addNote: function (book) {
+      this.$modal.show("add-note-modal", { book: book });
     },
     renameBook: function (book) {
-      console.log("renameBook", book);
+      this.$modal.show("rename-book-modal", { book: book });
     },
     deleteBook: function (book) {
       this.$modal.show("dialog", {
@@ -172,7 +176,7 @@ export default {
             title: "Confirm",
             class: "vue-dialog-button positive-button",
             handler: () => {
-              // dispatch to store
+              this.$store.dispatch("deleteNote", note.id);
               this.$modal.hide("dialog");
             },
           },
@@ -198,7 +202,6 @@ export default {
     },
     notes: {
       get() {
-        console.log("Got!");
         return this.$store.getters.notes;
       },
       set(newValue) {
@@ -210,6 +213,8 @@ export default {
     Book,
     Note,
     AddBookModal,
+    AddNoteModal,
+    RenameBookModal,
     draggable,
   },
 };
