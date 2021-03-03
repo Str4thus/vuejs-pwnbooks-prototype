@@ -19,12 +19,21 @@ export default {
             let target = getters.getBookById(id);
             commit('TOGGLE_BOOK', target);
         },
+        addBook({ commit, getters }, bookName) {
+            let newBook = {
+                "id": getters.books.length + 1,
+                "name": bookName,
+                "expanded": false,
+            }
+
+            commit('ADD_BOOK', newBook);
+        },
         deleteBook({ commit }, id) {
             commit('DELETE_BOOK', id);
         },
         updateBookOrder({ commit }, reorderedList) {
             commit("UPDATE_BOOK_ORDER", reorderedList)
-        }
+        },
     },
     mutations: {
         TOGGLE_BOOK(_, target) {
@@ -35,6 +44,9 @@ export default {
         },
         UPDATE_BOOK_ORDER(state, reorderedList) {
             state.books = reorderedList;
+        },
+        ADD_BOOK(state, newBook) {
+            state.books.push(newBook);
         }
     }
 }

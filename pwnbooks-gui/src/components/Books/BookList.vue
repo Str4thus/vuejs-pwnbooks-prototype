@@ -15,16 +15,17 @@
     >
       <Book
         v-for="book in books"
-        :key="book.id"
+        :key="'book-' + book.id"
         :book="book"
         :onrightclick="openBookCtx"
       >
         <draggable v-model="notes">
           <Note
-            v-for="note in getNotesForBook(book.id)"
-            :key="note.id"
+            v-for="note in notes"
+            :key="'note-' + note.id"
             :note="note"
             :onrightclick="openNoteCtx"
+            :book="book"
           />
         </draggable>
       </Book>
@@ -169,6 +170,7 @@ export default {
         buttons: [
           {
             title: "Confirm",
+            class: "vue-dialog-button positive-button",
             handler: () => {
               // dispatch to store
               this.$modal.hide("dialog");
@@ -176,6 +178,7 @@ export default {
           },
           {
             title: "Cancel",
+            class: "vue-dialog-button neutral-button",
             handler: () => {
               this.$modal.hide("dialog");
             },
@@ -191,6 +194,15 @@ export default {
       },
       set(newValue) {
         this.$store.dispatch("updateBookOrder", newValue);
+      },
+    },
+    notes: {
+      get() {
+        console.log("Got!");
+        return this.$store.getters.notes;
+      },
+      set(newValue) {
+        this.$store.dispatch("updateNoteOrder", newValue);
       },
     },
   },

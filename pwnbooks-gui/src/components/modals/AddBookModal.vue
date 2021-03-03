@@ -26,6 +26,7 @@ export default {
   methods: {
     createBook: function () {
       this.tryToCreate = true;
+      this.$store.dispatch("addBook", this.bookTitle.trim());
       this.$modal.hide("add-book-modal");
     },
     beforeClose(event) {
