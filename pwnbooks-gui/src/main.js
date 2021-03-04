@@ -8,6 +8,9 @@ import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
 import enUS from '@kangc/v-md-editor/lib/lang/en-US';
 import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
@@ -50,6 +53,8 @@ import VueSimpleContextMenu from 'vue-simple-context-menu';
 
 import VModal from 'vue-js-modal'
 
+
+
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
@@ -57,11 +62,13 @@ VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(vuepressTheme);
 VMdEditor.lang.use('en-US', enUS);
 VMdEditor.use(createCopyCodePlugin());
+VMdPreview.use(vuepressTheme);
 
 Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
 Vue.component('split-pane', splitPane);
 
 Vue.use(VMdEditor);
+Vue.use(VMdPreview);
 Vue.use(VModal, {
   dialog: true,
 });

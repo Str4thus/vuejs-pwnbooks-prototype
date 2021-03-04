@@ -1,12 +1,15 @@
 <template>
-  <div class="note-editor-wrapper">
+  <div class="note-editor-wrapper"> <!-- TODO: Change background to white if the preview is active-->
+    <button @click="toggle">Toggle!</button>
     <v-md-editor
+      v-if="showEditor"
       class="note-editor"
       left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save tip"
       v-model="activeNoteContent"
       v-on:change="onChange"
       :codemirror-config="codemirrorConfig"
     ></v-md-editor>
+    <v-md-preview v-else :text="activeNoteContent"></v-md-preview>
   </div>
 </template>
 
@@ -27,6 +30,7 @@ export default {
         mode: "markdown",
         lineWrapping: "wrap",
       },
+      showEditor: true,
     };
   },
   methods: {
@@ -34,9 +38,12 @@ export default {
       html;
       this.$store.dispatch("updateNoteContent", text);
     },
+    toggle() {
+      this.showEditor = !this.showEditor;
+    },
   },
   computed: {
-    activeNoteContent: function () {
+    activeNoteContent() {
       let activeNote = this.$store.getters.activeNote;
       if (activeNote == undefined) {
         return "";
