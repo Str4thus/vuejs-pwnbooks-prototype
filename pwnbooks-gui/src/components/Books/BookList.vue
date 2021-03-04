@@ -48,10 +48,7 @@
     </vue-simple-context-menu>
 
     <v-dialog />
-    <AddBookModal />
-    <RenameBookModal />
-
-    <AddNoteModal />
+    <BookListModal />
   </div>
 </template>
 
@@ -61,9 +58,7 @@ import "@/scss/modals.scss";
 
 import Book from "./Book";
 import Note from "./Note";
-import AddBookModal from "../modals/AddBookModal";
-import AddNoteModal from "../modals/AddNoteModal";
-import RenameBookModal from "../modals/RenameBookModal";
+import BookListModal from "../modals/BookListModal";
 import draggable from "vuedraggable";
 
 export default {
@@ -130,13 +125,13 @@ export default {
     },
 
     addBook: function () {
-      this.$modal.show("add-book-modal");
+      this.$modal.show("booklist-modal", { type: "addBook" });
     },
     addNote: function (book) {
-      this.$modal.show("add-note-modal", { book: book });
+      this.$modal.show("booklist-modal", { type: "addNote", book: book });
     },
     renameBook: function (book) {
-      this.$modal.show("rename-book-modal", { book: book });
+      this.$modal.show("booklist-modal", { type: "renameBook", book: book });
     },
     deleteBook: function (book) {
       this.$modal.show("dialog", {
@@ -212,9 +207,7 @@ export default {
   components: {
     Book,
     Note,
-    AddBookModal,
-    AddNoteModal,
-    RenameBookModal,
+    BookListModal,
     draggable,
   },
 };
