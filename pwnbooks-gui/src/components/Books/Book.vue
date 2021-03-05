@@ -5,7 +5,14 @@
       class="book-title"
       @contextmenu.prevent.stop="onrightclick($event, book)"
     >
-      <h3>{{ book.name }}</h3>
+      <h3>
+        <i
+          :class="['fa', book.expanded ? 'fa-caret-down' : 'fa-caret-right']"
+          aria-hidden="true"
+        >
+        </i>
+        {{ book.name }}
+      </h3>
     </div>
 
     <collapse-transition>
