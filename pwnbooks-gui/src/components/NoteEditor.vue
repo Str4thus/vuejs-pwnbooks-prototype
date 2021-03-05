@@ -37,9 +37,12 @@ export default {
   },
   methods: {
     onChange(text) {
-      let title = text.trim().substring(0, text.search("\n"));
-      let startIndex = title.search(" ");
-      title = startIndex >= 0 ? title.substring(startIndex + 1) : title;
+      let titleEndIndex = text.search("\n");
+      let title = text.trim();
+      title = titleEndIndex >= 0 ? title.substring(0, titleEndIndex) : title;
+
+      let titleStartIndex = title.search(" ");
+      title = titleStartIndex >= 0 ? title.substring(titleStartIndex + 1) : title;
 
       this.$store.dispatch("updateNoteTitle", title);
       this.$store.dispatch("updateNoteContent", text);
@@ -48,11 +51,14 @@ export default {
       this.showEditor = !this.showEditor;
     },
     handleUploadImage(_, insertImage, files) {
-      console.log(files);
+      let reader = new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload = () => console.log(reader.result);
+
+      // TODO send image to the server and get the url to pass it in 'insertImage'
 
       insertImage({
-        url:
-          "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1269952892,3525182336&fm=26&gp=0.jpg",
+        url: "<insert image url here>",
       });
     },
   },

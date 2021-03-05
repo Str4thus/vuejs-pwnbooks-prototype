@@ -12,10 +12,9 @@
     </template>
 
     <template slot="paneR">
-      <NoteEditor />
+      <NoteEditor v-if="isNoteSelected" />
     </template>
   </split-pane>
-  <!-- Toggle preview-only and use the preview component <v-md-preview :text="text"></v-md-preview> -->
 </template>
 
 
@@ -27,6 +26,15 @@ export default {
   methods: {
     onResize(newSize) {
       newSize; //console.log(newSize);
+    },
+  },
+  computed: {
+    isNoteSelected: {
+      get() {
+        let activeNote = this.$store.getters.activeNote;
+        console.log(activeNote);
+        return activeNote !== undefined;
+      },
     },
   },
   components: {
