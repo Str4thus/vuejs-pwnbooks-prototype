@@ -8,9 +8,9 @@
     @before-close="beforeClose"
   >
     <div class="booklist-modal-content">
-      <h1>{{ titleText }}</h1>
-      <input v-model="inputValue" :placeholder="placeholderText" />
-      <button @click="commit">Create</button>
+      <h1 class="booklist-modal-title">{{ titleText }}</h1>
+      <input class="booklist-modal-input" v-model="inputValue" :placeholder="placeholderText" />
+      <button class="booklist-modal-commit-button" @click="commit">Create</button>
     </div>
   </modal>
 </template>
@@ -39,8 +39,8 @@ export default {
     },
     titleText: {
       get() {
-        if (this.type == "addBook") return "Add a new book!";
-        if (this.type == "addNote") return "Add a new note!";
+        if (this.type == "addBook") return "Add a new Book";
+        if (this.type == "addNote") return "Add a new Note";
         if (this.type == "renameBook") return "Rename '" + this.book.name + "'";
 
         return "";
@@ -48,7 +48,7 @@ export default {
     },
     buttonText: {
       get() {
-        if (this.type == "addBook" || this.type == "addNote") return "Create";
+        if (this.type == "addBook" || this.type == "addNote") return "Add";
         if (this.type == "renameBook") return "Rename";
 
         return "";
