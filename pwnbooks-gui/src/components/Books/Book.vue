@@ -8,12 +8,16 @@
       <h3>{{ book.name }}</h3>
     </div>
 
-    <div v-if="book.expanded" class="book-notes">
+    <collapse-transition>
+      <div v-show="book.expanded" class="book-notes">
         <slot></slot>
-    </div>
+      </div>
+    </collapse-transition>
+  </div>
 </template>
 
 <script>
+import { CollapseTransition } from "@ivanv/vue-collapse-transition";
 import "@/scss/bookList.scss";
 
 export default {
@@ -26,6 +30,9 @@ export default {
     toggleBook: function (id) {
       this.$store.dispatch("toggleBook", id);
     },
+  },
+  components: {
+    CollapseTransition,
   },
 };
 </script>
