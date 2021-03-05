@@ -5,7 +5,7 @@
     :class="['book-note', note.active ? 'active-note' : '']"
     @contextmenu.prevent.stop="onrightclick($event, note)"
   >
-    <h4>{{ note.label }}</h4>
+    <h4>{{ note.title }}</h4>
   </div>
 </template>
 

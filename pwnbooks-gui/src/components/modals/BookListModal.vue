@@ -6,11 +6,20 @@
     :adaptive="true"
     @before-open="beforeOpen"
     @before-close="beforeClose"
+    @opened="onOpen"
   >
     <div class="booklist-modal-content">
       <h1 class="booklist-modal-title">{{ titleText }}</h1>
-      <input class="booklist-modal-input" v-model="inputValue" :placeholder="placeholderText" />
-      <button class="booklist-modal-commit-button" @click="commit">Create</button>
+      <input
+        ref="modalinput"
+        class="booklist-modal-input"
+        v-model="inputValue"
+        v-on:keyup.enter="commit"
+        :placeholder="placeholderText"
+      />
+      <button class="booklist-modal-commit-button" @click="commit">
+        Create
+      </button>
     </div>
   </modal>
 </template>
@@ -62,6 +71,9 @@ export default {
     },
     isInputValid() {
       return this.inputValue !== "";
+    },
+    onOpen() {
+      this.$refs.modalinput.focus();
     },
     beforeOpen(event) {
       this.type = event.params.type;

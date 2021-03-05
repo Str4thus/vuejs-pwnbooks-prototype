@@ -1,6 +1,8 @@
 <template>
   <div :class="showEditor ? 'note-editor-wrapper' : 'note-preview-wrapper'">
-    <button @click="toggle" class="preview-toggle-button">Switch to {{this.showEditor ? "preview" : "editor"}}</button>
+    <button @click="toggle" class="preview-toggle-button">
+      Switch to {{ this.showEditor ? "preview" : "editor" }}
+    </button>
     <v-md-editor
       v-if="showEditor"
       class="note-editor"
@@ -32,8 +34,13 @@ export default {
     };
   },
   methods: {
-    onChange(text, html) {
-      html;
+    onChange(text) {
+
+      let title = text.trim();
+      let startIndex = title.search(" ");
+      title = startIndex >= 0 ? title.substring(startIndex + 1) : title;
+      
+      this.$store.dispatch("updateNoteTitle", title);
       this.$store.dispatch("updateNoteContent", text);
     },
     toggle() {
