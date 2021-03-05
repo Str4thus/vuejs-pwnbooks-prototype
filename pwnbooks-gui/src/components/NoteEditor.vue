@@ -5,12 +5,14 @@
     </button>
     <v-md-editor
       v-if="showEditor"
+      v-model="activeNoteContent"
+      v-on:change="onChange"
+      @upload-image="handleUploadImage"
+      :codemirror-config="codemirrorConfig"
+      :disabled-menus="[]"
       class="note-editor"
       left-toolbar="undo redo | h bold italic strikethrough quote | ul ol table hr | tip code | save"
       right-toolbar="fullscreen"
-      v-model="activeNoteContent"
-      v-on:change="onChange"
-      :codemirror-config="codemirrorConfig"
     ></v-md-editor>
     <v-md-preview v-else :text="activeNoteContent"></v-md-preview>
   </div>
@@ -35,16 +37,23 @@ export default {
   },
   methods: {
     onChange(text) {
-
-      let title = text.trim();
+      let title = text.trim().substring(0, text.search("\n"));
       let startIndex = title.search(" ");
       title = startIndex >= 0 ? title.substring(startIndex + 1) : title;
-      
+
       this.$store.dispatch("updateNoteTitle", title);
       this.$store.dispatch("updateNoteContent", text);
     },
     toggle() {
       this.showEditor = !this.showEditor;
+    },
+    handleUploadImage(_, insertImage, files) {
+      console.log(files);
+
+      insertImage({
+        url:
+          "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1269952892,3525182336&fm=26&gp=0.jpg",
+      });
     },
   },
   computed: {
