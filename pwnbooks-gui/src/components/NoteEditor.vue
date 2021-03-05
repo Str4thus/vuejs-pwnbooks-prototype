@@ -1,10 +1,11 @@
 <template>
-  <div class="note-editor-wrapper"> <!-- TODO: Change background to white if the preview is active-->
-    <button @click="toggle">Toggle!</button>
+  <div :class="showEditor ? 'note-editor-wrapper' : 'note-preview-wrapper'">
+    <button @click="toggle" class="preview-toggle-button">Switch to {{this.showEditor ? "preview" : "editor"}}</button>
     <v-md-editor
       v-if="showEditor"
       class="note-editor"
-      left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save tip"
+      left-toolbar="undo redo | h bold italic strikethrough quote | ul ol table hr | tip code | save"
+      right-toolbar="fullscreen"
       v-model="activeNoteContent"
       v-on:change="onChange"
       :codemirror-config="codemirrorConfig"
@@ -13,9 +14,6 @@
   </div>
 </template>
 
-<!--
-Create own anchors: https://code-farmer-i.github.io/vue-markdown-editor/senior/anchor.html
--->
 
 <script>
 import "../scss/noteEditor.scss";

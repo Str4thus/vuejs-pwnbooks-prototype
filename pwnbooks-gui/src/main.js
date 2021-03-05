@@ -15,6 +15,9 @@ import enUS from '@kangc/v-md-editor/lib/lang/en-US';
 import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
 import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
+import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
+import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css';
+import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
 
 import Codemirror from 'codemirror';
 import 'codemirror/mode/markdown/markdown';
@@ -58,11 +61,17 @@ import VModal from 'vue-js-modal'
 Vue.config.productionTip = false
 
 // VueMarkdownEditor
+VMdPreview.use(vuepressTheme);
+VMdPreview.use(createCopyCodePlugin());
+VMdPreview.use(createTodoListPlugin());
+VMdPreview.use(createLineNumbertPlugin());
+
 VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(vuepressTheme);
 VMdEditor.lang.use('en-US', enUS);
 VMdEditor.use(createCopyCodePlugin());
-VMdPreview.use(vuepressTheme);
+VMdEditor.use(createTodoListPlugin());
+VMdEditor.use(createLineNumbertPlugin());
 
 Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
 Vue.component('split-pane', splitPane);
