@@ -17,7 +17,8 @@
 
     <collapse-transition>
       <div v-show="book.expanded" class="book-notes">
-        <slot></slot>
+        <slot v-if="numberOfNotes > 0"></slot>
+        <p class="empty-book-text" center v-else>No notes for {{ book["name"] }}</p>
       </div>
     </collapse-transition>
   </div>
@@ -36,6 +37,13 @@ export default {
   methods: {
     toggleBook: function (id) {
       this.$store.dispatch("toggleBook", id);
+    },
+  },
+  computed: {
+    numberOfNotes: {
+      get() {
+        return this.$store.getters.getNotesByBookId(this.book.id).length;
+      },
     },
   },
   components: {

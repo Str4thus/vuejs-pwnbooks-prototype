@@ -32,7 +32,6 @@ export default {
     isNoteSelected: {
       get() {
         let activeNote = this.$store.getters.activeNote;
-        console.log(activeNote);
         return activeNote !== undefined;
       },
     },
