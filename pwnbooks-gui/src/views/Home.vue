@@ -1,16 +1,22 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 class="welcome-title">Welcome, Str4thus!</h1>
+    <ProjectOverview>
+      <ProjectCard />
+    </ProjectOverview>
   </div>
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
+import "@/scss/projectOverview.scss";
+import ProjectOverview from "../components/Home/ProjectOverview";
+import ProjectCard from "../components/Home/ProjectCard";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    ProjectOverview,
+    ProjectCard,
   },
 };
 </script>

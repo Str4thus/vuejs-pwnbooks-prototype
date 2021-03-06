@@ -1,0 +1,28 @@
+.welcome-title {
+    text-align: center;
+    color: $text-color-default;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.project-overview-header {
+    h2 {
+        display: inline;
+        margin: 0;
+        margin-left: 20px;
+    }
+}
+
+.start-new-project-button {
+    border: 0;
+    color: #000;
+    background-color: $primary;
+    margin-left: 30px;
+    font-size: $font-size-default;
+    padding: 5px;
+
+    &:hover {
+        background-color: #fff;
+        cursor: pointer;
+    }
+}
