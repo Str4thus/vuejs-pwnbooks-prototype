@@ -4,7 +4,12 @@
   <div id="app" :class="{ collapsed: collapsed }">
     <div class="app">
       <div class="container">
-        <split-pane :max-percent="20" :default-percent="90" split="horizontal">
+        <split-pane
+          :max-percent="90"
+          :min-percent="90"
+          :default-percent="90"
+          split="horizontal"
+        >
           <template slot="paneR">
             <Console />
           </template>
@@ -122,6 +127,6 @@ export default {
   },
   components: {
     Console,
-  }
+  },
 };
 </script>
