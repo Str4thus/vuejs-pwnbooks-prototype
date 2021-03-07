@@ -4,19 +4,7 @@
   <div id="app" :class="{ collapsed: collapsed }">
     <div class="app">
       <div class="container">
-        <split-pane
-          :max-percent="90"
-          :min-percent="90"
-          :default-percent="90"
-          split="horizontal"
-        >
-          <template slot="paneR">
-            <Console />
-          </template>
-          <template slot="paneL">
-            <router-view />
-          </template>
-        </split-pane>
+        <router-view />
       </div>
 
       <sidebar-menu
@@ -39,7 +27,6 @@
 <script>
 import "./scss/app.scss";
 import Seperator from "./components/SidebarMenu/Seperator";
-import Console from "./components/Console";
 
 export default {
   name: "PWNBOOKS",
@@ -124,9 +111,6 @@ export default {
         this.collapsed = true;
       }
     },
-  },
-  components: {
-    Console,
   },
 };
 </script>

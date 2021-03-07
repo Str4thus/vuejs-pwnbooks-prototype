@@ -26,3 +26,13 @@
         cursor: pointer;
     }
 }
+
+.vue-grid-layout {
+    overflow: hidden;
+}
+
+.vue-grid-item {
+    background: green !important;
+    touch-action: none;
+    box-sizing: border-box;
+}
