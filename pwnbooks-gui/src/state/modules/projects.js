@@ -30,6 +30,21 @@ export default {
         },
     },
     actions: {
+        addProject({ commit, getters }, { id, title, description, color }) {
+            let newProject = {
+                i: parseInt(id),
+                id: id,
+                title: title,
+                description: description,
+                color: color,
+                x: (getters.projects.length * 2) % 12,
+                y: getters.projects.length + 12, // puts it at the bottom
+                w: 2,
+                h: 2,
+            }
+
+            commit("PROJECT_ADD", newProject);
+        },
         updateProjectPosition({ commit, getters }, { id, newX, newY }) {
             let target = getters.getProjectById(id);
             commit("PROJECT_POSITION_UPDATE", { target, newX, newY });
@@ -40,16 +55,16 @@ export default {
         }
     },
     mutations: {
+        PROJECT_ADD(state, newProject) {
+            state.projects.push(newProject);
+        },
         PROJECT_POSITION_UPDATE(state, { target, newX, newY }) {
             target.x = newX;
             target.y = newY;
-            console.log(state.projects);
         },
         PROJECT_SIZE_UPDATE(state, { target, newH, newW }) {
             target.h = newH;
             target.w = newW;
-
-            console.log(state.projects);
         }
     }
 }

@@ -2,7 +2,9 @@
   <div class="project-overview">
     <div class="project-overview-header">
       <h2>Projects</h2>
-      <button class="start-new-project-button">+ Start new Project</button>
+      <button @click="addProject" class="start-new-project-button">
+        + Start new Project
+      </button>
     </div>
     <hr />
     <grid-layout
@@ -29,6 +31,16 @@ export default {
   name: "ProjectOverview",
   props: {
     layout: Array,
+  },
+  methods: {
+    addProject() {
+      this.$store.dispatch("addProject", {
+        id: 40,
+        title: "Testing",
+        description: "dynamic",
+        color: "#fff",
+      });
+    },
   },
   components: {
     GridLayout: VueGridLayout.GridLayout,
