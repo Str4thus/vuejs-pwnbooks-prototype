@@ -21,7 +21,7 @@ export default {
         },
         addBook({ commit, getters }, bookName) {
             let newBook = {
-                "id": getters.books.length + 2,
+                "id": getters.books.length + 1,
                 "name": bookName,
                 "expanded": false,
             }

@@ -8,6 +8,7 @@
       :i="project.i"
       @resized="resizedEvent"
       @moved="movedEvent"
+      :style="bgc"
     >
       {{ project.title }}
     </grid-item>
@@ -20,6 +21,13 @@ import "@/scss/projectOverview.scss";
 
 export default {
   name: "ProjectCard",
+  data() {
+    return {
+      bgc: {
+        backgroundColor: this.project.color,
+      },
+    };
+  },
   props: {
     project: Object,
   },

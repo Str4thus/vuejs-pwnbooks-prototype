@@ -30,7 +30,8 @@ export default {
         },
     },
     actions: {
-        addProject({ commit, getters }, { id, title, description, color }) {
+        addProject({ commit, getters }, { title, description, color }) {
+            let id = getters.projects.length + 1;
             let newProject = {
                 i: parseInt(id),
                 id: id,

@@ -61,7 +61,7 @@ export default {
         },
         addNote({ commit, getters }, { title, bookId }) {
             let newNote = {
-                id: getters.notes.length + 2,
+                id: getters.notes.length + 1,
                 bookId: bookId,
                 title: TITLE_PREFIX + title,
                 content: "# " + title,

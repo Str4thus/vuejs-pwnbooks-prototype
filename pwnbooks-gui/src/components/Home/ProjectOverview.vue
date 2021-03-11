@@ -35,7 +35,6 @@ export default {
   methods: {
     addProject() {
       this.$store.dispatch("addProject", {
-        id: 40,
         title: "Testing",
         description: "dynamic",
         color: "#fff",
