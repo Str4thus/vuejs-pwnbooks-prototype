@@ -18,7 +18,7 @@
         :placeholder="placeholderText"
       />
       <button class="booklist-modal-commit-button" @click="commit">
-        Create
+        {{ buttonText }}
       </button>
     </div>
   </modal>

@@ -54,7 +54,7 @@
 
 <script>
 import "@/scss/bookList.scss";
-import "@/scss/modals.scss";
+import "@/scss/booklistModal.scss";
 
 import Book from "./Book";
 import Note from "./Note";
@@ -119,7 +119,7 @@ export default {
           this.deleteNote(event.item);
           break;
         default:
-          console.log("Unknown option clicked!");
+          console.error("Unknown option clicked!");
           break;
       }
     },

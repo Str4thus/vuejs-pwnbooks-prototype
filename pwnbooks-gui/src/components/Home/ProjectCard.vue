@@ -6,11 +6,13 @@
       :w="project.w"
       :h="project.h"
       :i="project.i"
+      :style="bgc"
       @resized="resizedEvent"
       @moved="movedEvent"
-      :style="bgc"
     >
       {{ project.title }}
+      {{ project.description }}
+      <button @click="onClick(project)">Edit</button>
     </grid-item>
   </div>
 </template>
@@ -30,6 +32,7 @@ export default {
   },
   props: {
     project: Object,
+    onClick: Function,
   },
   methods: {
     movedEvent(i, newX, newY) {

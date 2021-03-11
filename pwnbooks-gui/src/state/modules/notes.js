@@ -87,7 +87,6 @@ export default {
             }
         },
         updateNoteOrder({ commit }, reorderedList) {
-            console.log(reorderedList);
             commit("UPDATE_NOTE_ORDER", reorderedList)
         }
     },

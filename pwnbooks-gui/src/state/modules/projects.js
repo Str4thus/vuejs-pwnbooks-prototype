@@ -26,11 +26,11 @@ export default {
     getters: {
         projects: state => state.projects,
         getProjectById: (state) => (projectId) => {
-            return state.projects.filter(project => project.projectId == projectId)
+            return state.projects.find(project => project.id == projectId)
         },
     },
     actions: {
-        addProject({ commit, getters }, { title, description, color }) {
+        createProject({ commit, getters }, { title, description, color }) {
             let id = getters.projects.length + 1;
             let newProject = {
                 i: parseInt(id),
@@ -43,8 +43,12 @@ export default {
                 w: 2,
                 h: 2,
             }
-
             commit("PROJECT_ADD", newProject);
+        },
+        editProject({ commit, getters }, { id, title, description, color }) {
+            let target = getters.getProjectById(id);
+
+            commit("PROJECT_EDIT", { target, title, description, color })
         },
         updateProjectPosition({ commit, getters }, { id, newX, newY }) {
             let target = getters.getProjectById(id);
@@ -59,11 +63,16 @@ export default {
         PROJECT_ADD(state, newProject) {
             state.projects.push(newProject);
         },
-        PROJECT_POSITION_UPDATE(state, { target, newX, newY }) {
+        PROJECT_EDIT(_, { target, title, description, color }) {
+            target.title = title;
+            target.description = description;
+            target.color = color;
+        },
+        PROJECT_POSITION_UPDATE(_, { target, newX, newY }) {
             target.x = newX;
             target.y = newY;
         },
-        PROJECT_SIZE_UPDATE(state, { target, newH, newW }) {
+        PROJECT_SIZE_UPDATE(_, { target, newH, newW }) {
             target.h = newH;
             target.w = newW;
         }

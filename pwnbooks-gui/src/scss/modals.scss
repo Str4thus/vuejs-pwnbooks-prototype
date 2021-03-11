@@ -18,38 +18,3 @@
     background-color: $primary;
 }
 
-.booklist-modal {
-    background-color: $background-dark;
-    width: 450px !important;
-}
-
-.booklist-modal-title {
-    text-align: center;
-    color: $text-color-light;
-}
-
-.booklist-modal-input {
-    width: 49%;
-    margin-top: 10px;
-    margin-left: 25%;
-    margin-right: 25%;
-    border: 0;
-    height: 30px;
-    font-size: 16px;
-}
-
-.booklist-modal-commit-button {
-    border: 0;
-    background-color: $primary;
-    width: 50%;
-    height: 30px;
-    margin-left: 25%;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-size: $font-size-default;
-
-    &:hover {
-        cursor: pointer;
-        background-color: #fff;
-    }
-}
