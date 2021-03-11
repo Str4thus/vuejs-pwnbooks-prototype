@@ -6,7 +6,7 @@
       :w="project.w"
       :h="project.h"
       :i="project.i"
-      :style="bgc"
+      :style="style"
       @resized="resizedEvent"
       @moved="movedEvent"
     >
@@ -23,12 +23,15 @@ import "@/scss/projectOverview.scss";
 
 export default {
   name: "ProjectCard",
-  data() {
-    return {
-      bgc: {
-        backgroundColor: this.project.color,
+  computed: {
+    style: {
+      get() {
+        return {
+          backgroundColor: this.$store.getters.getProjectById(this.project.id)
+            .color,
+        };
       },
-    };
+    },
   },
   props: {
     project: Object,

@@ -11,19 +11,20 @@
     <div class="project-modal-content">
       <h1 class="project-modal-title">{{ titleText }}</h1>
       <input
-        ref="nameInput"
-        class="project-name-input"
+        ref="titleInput"
+        class="project-title-input"
         v-model="titleValue"
         v-on:keyup.enter="commit"
         placeholder="Project Title"
       />
       <input
-        ref="modalinput"
+        ref="descriptionInput"
         class="project-description-input"
         v-model="descriptionValue"
         v-on:keyup.enter="commit"
         placeholder="Description"
       />
+      <v-input-colorpicker v-model="colorValue" />
       <button class="project-modal-commit-button" @click="commit">
         {{ buttonText }}
       </button>
@@ -32,6 +33,8 @@
 </template>
 
 <script>
+import InputColorPicker from "vue-native-color-picker";
+
 export default {
   name: "ProjectModal",
   data() {
@@ -79,7 +82,7 @@ export default {
       return this.titleValue !== "" && this.descriptionValue !== "";
     },
     onOpen() {
-      this.$refs.nameInput.focus();
+      this.$refs.titleInput.focus();
     },
     beforeOpen(event) {
       this.type = event.params.type;
@@ -87,7 +90,7 @@ export default {
 
       this.titleValue = "";
       this.descriptionValue = "";
-      this.colorValue = "#333";
+      this.colorValue = "#123344";
 
       if (this.type == "editProject") {
         this.titleValue = this.project.title;
@@ -128,6 +131,9 @@ export default {
           break;
       }
     },
+  },
+  components: {
+    "v-input-colorpicker": InputColorPicker,
   },
 };
 </script>
