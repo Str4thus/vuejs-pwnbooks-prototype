@@ -16,6 +16,7 @@
       <Book
         v-for="book in books"
         :key="'book-' + book.id"
+        :project="currentProject"
         :book="book"
         :onrightclick="openBookCtx"
       >
@@ -187,6 +188,11 @@ export default {
     },
   },
   computed: {
+    currentProject: {
+      get() {
+        return this.$store.getters.activeProject;
+      },
+    },
     books: {
       get() {
         return this.$store.getters.books;

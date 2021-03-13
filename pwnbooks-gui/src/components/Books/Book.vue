@@ -1,6 +1,7 @@
 <template>
   <div class="book">
     <div
+      v-if="book.projectId == project.id"
       v-on:click="toggleBook(book['id'])"
       class="book-title"
       @contextmenu.prevent.stop="onrightclick($event, book)"
@@ -16,9 +17,11 @@
     </div>
 
     <collapse-transition>
-      <div v-show="book.expanded" class="book-notes">
+      <div v-show="book.expanded && book.projectId == project.id" class="book-notes">
         <slot v-if="numberOfNotes > 0"></slot>
-        <p class="empty-book-text" center v-else>No notes for {{ book["name"] }}</p>
+        <p v-else class="empty-book-text" center>
+          No notes for {{ book["name"] }}
+        </p>
       </div>
     </collapse-transition>
   </div>
@@ -31,6 +34,7 @@ import "@/scss/bookList.scss";
 export default {
   name: "Book",
   props: {
+    project: Object,
     book: Object,
     onrightclick: Function,
   },

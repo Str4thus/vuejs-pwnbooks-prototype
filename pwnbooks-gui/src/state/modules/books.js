@@ -1,15 +1,18 @@
 export default {
     state: {
         books: [
-            { "id": 0, "name": "Blue", "expanded": false },
-            { "id": 1, "name": "Jewel", "expanded": false },
-            { "id": 2, "name": "Feline", "expanded": false },
-            { "id": 3, "name": "Academy", "expanded": false },
-            { "id": 4, "name": "Crossfit", "expanded": false }
+            { "id": 0, "projectId": 0, "name": "Blue", "expanded": false },
+            { "id": 1, "projectId": 1, "name": "Jewel", "expanded": false },
+            { "id": 2, "projectId": 1, "name": "Feline", "expanded": false },
+            { "id": 3, "projectId": 0, "name": "Academy", "expanded": false },
+            { "id": 4, "projectId": 0, "name": "Crossfit", "expanded": false }
         ]
     },
     getters: {
         books: state => state.books,
+        getBooksByProjectId: (state) => (projectId) => {
+            return state.books.filter(book => book.projectId == projectId)
+        },
         getBookById: (state) => (id) => {
             return state.books.find(book => book.id == id);
         }
@@ -19,8 +22,9 @@ export default {
             let target = getters.getBookById(id);
             commit('TOGGLE_BOOK', target);
         },
-        addBook({ commit, getters }, bookName) {
+        addBook({ commit, getters }, { projectId, bookName }) {
             let newBook = {
+                "projectId": projectId,
                 "id": getters.books.length + 1,
                 "name": bookName,
                 "expanded": false,

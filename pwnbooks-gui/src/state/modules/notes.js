@@ -59,6 +59,12 @@ export default {
 
             commit("SELECT_NOTE", { target, previous });
         },
+        deselectNote({ commit, getters }) {
+            let target = getters.activeNote;
+            if (target != undefined) {
+                commit("DESELECT_NOTE", target);
+            }
+        },
         addNote({ commit, getters }, { title, bookId }) {
             let newNote = {
                 id: getters.notes.length + 1,
@@ -91,6 +97,9 @@ export default {
         }
     },
     mutations: {
+        DESELECT_NOTE(_, target) {
+            target.active = false;
+        },
         SELECT_NOTE(_, { target, previous }) {
             if (previous != undefined) {
                 previous.active = false;

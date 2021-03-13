@@ -2,7 +2,7 @@
   <div class="project-overview">
     <div class="project-overview-header">
       <h2>Projects</h2>
-      <button @click="onClick()" class="start-new-project-button">
+      <button @click="createProject()" class="start-new-project-button">
         + Start new Project
       </button>
     </div>
@@ -31,7 +31,7 @@ export default {
   name: "ProjectOverview",
   props: {
     layout: Array,
-    onClick: Function,
+    createProject: Function,
   },
   components: {
     GridLayout: VueGridLayout.GridLayout,

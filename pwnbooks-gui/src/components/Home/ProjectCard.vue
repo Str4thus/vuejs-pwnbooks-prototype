@@ -1,5 +1,9 @@
 <template>
-  <div class="project-card">
+  <div
+    class="project-card"
+    @contextmenu.prevent.stop="onrightclick($event, project)"
+    @dblclick="ondoubleclick(project)"
+  >
     <grid-item
       :x="project.x"
       :y="project.y"
@@ -12,14 +16,13 @@
     >
       {{ project.title }}
       {{ project.description }}
-      <button @click="onClick(project)">Edit</button>
     </grid-item>
   </div>
 </template>
 
 <script>
-import VueGridLayout from "vue-grid-layout";
 import "@/scss/projectOverview.scss";
+import VueGridLayout from "vue-grid-layout";
 
 export default {
   name: "ProjectCard",
@@ -35,7 +38,8 @@ export default {
   },
   props: {
     project: Object,
-    onClick: Function,
+    ondoubleclick: Function,
+    onrightclick: Function,
   },
   methods: {
     movedEvent(i, newX, newY) {

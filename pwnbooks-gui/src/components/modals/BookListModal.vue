@@ -105,7 +105,10 @@ export default {
         }
 
         case "addBook":
-          this.$store.dispatch("addBook", this.inputValue);
+          this.$store.dispatch("addBook", {
+            projectId: this.$store.getters.activeProject.id,
+            bookName: this.inputValue,
+          });
           break;
 
         case "addNote": {

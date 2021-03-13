@@ -1,26 +1,8 @@
 export default {
     state: {
         projects: [
-            { i: "0", id: 0, title: "HTB", description: "HackTheBox Boxes", color: "#ff00ff", x: 0, y: 0, w: 1, h: 2 },
-            { i: "1", id: 1, title: "Vulnhub", description: "VMs from Vulnhub", color: "#ff00ff", x: 2, y: 0, w: 1, h: 2 },
-            { i: "2", id: 2, title: "Dante", description: "HackTheBox Endgame Lab", color: "#ff00ff", x: 4, y: 0, w: 1, h: 2 },
-            { i: "3", id: 3, title: "APT", description: "HackTheBox ProLab", color: "#ff00ff", x: 6, y: 0, w: 1, h: 2 },
-            { i: "4", id: 4, title: "THM", description: "TryHackMe Rooms", color: "#ff00ff", x: 8, y: 0, w: 1, h: 2 },
-            { i: "5", id: 5, title: "V.I.P", description: "HackTheBox ProLab", color: "#ff00ff", x: 10, y: 0, w: 1, h: 2 },
-            { i: "6", id: 6, title: "Testing", description: "Just trying out stuff..", color: "#ff00ff", x: 0, y: 2, w: 2, h: 2 },
-            { i: "7", d: 7, title: "A", description: "asdf", color: "#ff00ff", x: 2, y: 2, w: 2, h: 2 },
-            { i: "8", id: 8, title: "B", description: "fasdf", color: "#ff00ff", x: 4, y: 2, w: 2, h: 2 },
-            { i: "9", id: 9, title: "C", description: "asdf", color: "#ff00ff", x: 6, y: 2, w: 2, h: 2 },
-            { i: "10", id: 10, title: "D", description: "asdf", color: "#ff00ff", x: 8, y: 2, w: 2, h: 2 },
-            { i: "11", id: 11, title: "E", description: "asdf", color: "#ff00ff", x: 10, y: 4, w: 2, h: 2 },
-            { i: "12", id: 12, title: "F", description: "asd", color: "#ff00ff", x: 0, y: 4, w: 2, h: 2 },
-            { i: "13", id: 13, title: "G", description: "afasdfasd", color: "#ff00ff", x: 2, y: 4, w: 2, h: 2 },
-            { i: "14", id: 14, title: "H", description: "adfasdfasd", color: "#ff00ff", x: 4, y: 4, w: 2, h: 2 },
-            { i: "15", id: 15, title: "I", description: "fasdfasdf", color: "#ff00ff", x: 6, y: 4, w: 2, h: 2 },
-            { i: "16", id: 16, title: "J", description: "fasdfa", color: "#ff00ff", x: 8, y: 4, w: 2, h: 2 },
-            { i: "17", id: 17, title: "K", description: "asdf", color: "#ff00ff", x: 10, y: 4, w: 2, h: 2 },
-            { i: "18", id: 18, title: "L", description: "asdfasdf", color: "#ff00ff", x: 0, y: 6, w: 2, h: 2 },
-            { i: "19", id: 19, title: "M", description: "asdfasdfasdf", color: "#ff00ff", x: 2, y: 6, w: 2, h: 2 },
+            { active: false, i: "0", id: 0, title: "HTB", description: "HackTheBox Boxes", color: "#ff00ff", x: 0, y: 0, w: 1, h: 2 },
+            { active: false, i: "1", id: 1, title: "Vulnhub", description: "VMs from Vulnhub", color: "#0000ff", x: 2, y: 0, w: 1, h: 2 },
         ]
     },
     getters: {
@@ -28,8 +10,15 @@ export default {
         getProjectById: (state) => (projectId) => {
             return state.projects.find(project => project.id == projectId)
         },
+        activeProject: state => state.projects.find(project => project.active),
     },
     actions: {
+        selectProject({ commit, getters }, id) {
+            let target = getters.getProjectById(id);
+            let previous = getters.activeProject;
+
+            commit("PROJECT_SELECT", { target, previous });
+        },
         createProject({ commit, getters }, { title, description, color }) {
             let id = getters.projects.length + 1;
             let newProject = {
@@ -50,6 +39,9 @@ export default {
 
             commit("PROJECT_EDIT", { target, title, description, color })
         },
+        deleteProject({ commit }, id) {
+            commit('PROJECT_DELETE', id);
+        },
         updateProjectPosition({ commit, getters }, { id, newX, newY }) {
             let target = getters.getProjectById(id);
             commit("PROJECT_POSITION_UPDATE", { target, newX, newY });
@@ -60,16 +52,23 @@ export default {
         }
     },
     mutations: {
+        PROJECT_SELECT(_, { target, previous }) {
+            if (previous != undefined) {
+                previous.active = false;
+            }
+
+            target.active = true;
+        },
         PROJECT_ADD(state, newProject) {
             state.projects.push(newProject);
         },
-        PROJECT_EDIT(state, { target, title, description, color }) {
+        PROJECT_EDIT(_, { target, title, description, color }) {
             target.title = title;
             target.description = description;
             target.color = color;
-
-
-            console.log(state);
+        },
+        PROJECT_DELETE(state, id) {
+            state.projects = state.projects.filter(project => project.id != id);
         },
         PROJECT_POSITION_UPDATE(_, { target, newX, newY }) {
             target.x = newX;
